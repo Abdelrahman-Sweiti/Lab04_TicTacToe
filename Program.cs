@@ -18,7 +18,7 @@ namespace Lab04_TicTacToe
 
             }
 
-
+             
         }
 
         static void StartGame()
