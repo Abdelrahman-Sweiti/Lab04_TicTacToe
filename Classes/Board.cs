@@ -6,43 +6,32 @@ namespace Lab04_TicTacToe.Classes
 {
     public class Board
     {
-		/// <summary>
-		/// Tic Tac Toe Gameboard states
-		/// </summary>
-		public string[,] GameBoard = new string[,]
-		{
-			{"1", "2", "3"},
-			{"4", "5", "6"},
-			{"7", "8", "9"},
-		};
+        /// <summary>
+        /// Tic Tac Toe Gameboard states
+        /// </summary>
+        public string[,] GameBoard = new string[,]
+        {
+            {"1", "2", "3"},
+            {"4", "5", "6"},
+            {"7", "8", "9"},
+        };
 
 
-		public void DisplayBoard()
-		{
+        //function to Output the board to the console
+        public void DisplayBoard()
+        {
 
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write("|" + GameBoard[i, j] + "|");
+                }
+                Console.WriteLine("\n-------------");
+
+            }
             //TODO: Output the board to the console
 
-            for (int row = 0; row < 3; row++)
-            {
-
-                for (int col = 0; col < 3; col++)
-                {
-
-                    Console.Write(GameBoard[row, col]);
-
-                    if (col < 2)
-                    {
-                        Console.Write(" | ");
-                    }
-                }
-
-                Console.WriteLine();
-                if (row < 2)
-                {
-                    Console.WriteLine("----------");
-                }
-            }
-
         }
-	}
+    }
 }

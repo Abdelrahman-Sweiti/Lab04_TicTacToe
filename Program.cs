@@ -1,5 +1,5 @@
-﻿using System;
-using Lab04_TicTacToe.Classes;
+﻿using Lab04_TicTacToe.Classes;
+using System;
 
 namespace Lab04_TicTacToe
 {
@@ -7,58 +7,39 @@ namespace Lab04_TicTacToe
     {
         static void Main(string[] args)
         {
-            //Board board = new Board();
-            //board.DisplayBoard();
-            try {
-                StartGame();
-            }
-            catch
+
+            do
             {
-                 Console.WriteLine("Something went wrong, please try again!");
+                Console.Clear();
+                Console.WriteLine("Tic Tac Toe game!");
+                StartGame();
 
-            }
+                Console.WriteLine("Do you want to play again? (y/n)");
+            } while (Console.ReadLine().ToLower() == "y");
 
-             
+            Console.WriteLine("Thank you for playing Tic Tac Toe!");
         }
 
         static void StartGame()
         {
-            // TODO: Setup your game. Create a new method that creates your players and instantiates the game class. Call that method in your Main method.
-            // You are requesting a Winner to be returned, Determine who the winner is output the celebratory message to the correct player. If it's a draw, tell them that there is no winner. 
-            Console.WriteLine("Let's start!");
+            Player p1 = new Player();
+            p1.Name = "player1";
+            p1.Marker = "X";
+            p1.IsTurn = true;
 
-            Console.Write("Enter first player name: ");
-            string playerOneName = Console.ReadLine();
+            Player p2 = new Player();
+            p2.Name = "player2";
+            p2.Marker = "O";
+            p2.IsTurn = false;
 
-            Console.Write("Enter second player name: ");
-            string playerTwoName = Console.ReadLine();
+            Game game = new Game(p1, p2);
+            Player winner = game.Play();
 
-            Player playerOne = new Player();
-            playerOne.Name = playerOneName;
-            playerOne.Marker = "X";
-
-            Player playerTwo = new Player();
-            playerTwo.Name = playerTwoName;
-            playerTwo.Marker = "O";
-
-
-            Game game = new Game(playerOne, playerTwo);
-
-
-
-            Player winner = game.Play(); // it returns winner
-
-            if (winner != null)
-            {
-                Console.WriteLine($"The winner is {winner.Name}! ");
-            }
+            if (winner == null)
+                Console.WriteLine("no winners!");
             else
-            {
-                Console.WriteLine("It's a draw! There is no winner.");
-            }
+                Console.WriteLine($"{winner.Marker} Wins!");
         }
-
-      
 
 
     }
